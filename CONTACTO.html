@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contacto - La Sazón</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Head: pega aquí tu URL del favicon entre las comillas href="" -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/433/433087.png" id="site-favicon" type="image/x-icon">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Restaurante La Sazón</h1>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="INICIO.html" class="nav-link" data-target="inicio">Inicio</a></li>
+        <li><a href="menu.html" class="nav-link" data-target="menu-section">Menú</a></li>
+        <li><a href="INICIO.html#reservas" class="nav-link" data-target="reservas">Reservas</a></li>
+        <li><a href="INICIO.html#opiniones" class="nav-link" data-target="opiniones">Opiniones</a></li>
+        <li><a href="acerca.html" class="nav-link" data-target="chefs">Acerca</a></li>
+        <li><a href="contacto.html" class="nav-link" data-target="contacto">Contacto</a></li>
+        <li><a href="galeria.html" class="nav-link" data-target="galeria">Galería</a></li>
+      </ul>
+    </nav>
+
+    <!-- Theme toggle -->
+    <button id="btn-theme" class="theme-toggle" aria-pressed="false" title="Alternar modo oscuro">🌙</button>
+  </header>
+
+  <main class="container">
+    <section id="contacto" class="section" aria-label="Contacto">
+      <h2>Contacto</h2>
+      <p>Si tienes dudas o quieres reservas especiales, escríbenos.</p>
+      <!-- contact-form: validación y guardado parcial (nombre/email) manejados por script.js -->
+      <form id="contact-form" novalidate>
+        <div>
+          <label for="contact-name">Nombre</label>
+          <input id="contact-name" name="contactName" required>
+        </div>
+        <div>
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="contactEmail" type="email" required>
+        </div>
+        <div>
+          <label for="contact-msg">Mensaje</label>
+          <textarea id="contact-msg" name="contactMsg" rows="6" required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer: fecha actual -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><small>Fecha: <time id="site-date" datetime=""></time></small></div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="toast" hidden></div>
+  <script src="script.js" defer></script>
+</body>
+</html>
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+/* Estilos principales del proyecto "La Sazón".*/
+:root{
+  --bg:#fafafa; --card:#fff; --accent:#dbb449; --muted:#666;
+  --radius:8px; --maxw:1100px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#111;line-height:1.4}
+.site-header{background:var(--accent);color:#fff;padding:.6rem 1rem;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.site-header h1{margin:0;font-size:1.1rem}
+.main-nav ul{display:flex;gap:.5rem;margin:0;padding:0;list-style:none}
+.main-nav a{color:#fff;padding:.45rem .6rem;border-radius:6px;text-decoration:none;font-weight:600}
+.main-nav a:focus, .main-nav a:hover{background:rgba(255,255,255,.08);outline:2px solid rgba(255,255,255,.12)}
+.main-nav a.active{background:#fff;color:var(--accent);}
+
+/* Layout principal */
+.container{max-width:var(--maxw);margin:1rem auto;padding:0 1rem;display:grid;grid-template-columns:1fr;gap:1rem}
+.section{background:transparent;padding:1rem;border-radius:6px}
+.hero{background:linear-gradient(90deg,rgba(183,28,28,.06),rgba(0,0,0,0));padding:1.25rem;border-radius:8px}
+.cta{display:inline-block;padding:.5rem .75rem;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none}
+
+/* Menu cards */
+.menu-list{list-style:none;padding:0;margin:0;display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.menu-card{background:var(--card);border-radius:var(--radius);padding:0.75rem;box-shadow:0 2px 6px rgba(0,0,0,.06);display:flex;flex-direction:column;transition:transform .18s ease,opacity .18s}
+.menu-card img{width:100%;height:140px;object-fit:cover;border-radius:6px;margin-bottom:.5rem}
+.card-body{flex:1;display:flex;flex-direction:column;gap:.35rem}
+.card-title{font-weight:700}
+.card-meta{color:var(--muted);font-size:.9rem}
+.card-actions{display:flex;gap:.5rem;margin-top:.5rem}
+.card-actions button{background:transparent;border:1px solid #ddd;padding:.4rem .6rem;border-radius:6px;cursor:pointer}
+.card-actions button.delete{border-color:#f44336;color:#b71c1c}
+
+/* Forms and lists */
+form div{margin-bottom:.6rem}
+input, select, textarea{padding:.5rem;border:1px solid #ddd;border-radius:6px;width:100%}
+.form-actions{display:flex;gap:.5rem;align-items:center}
+.simple-list, .reviews-list{list-style:none;padding:0;margin:0}
+.reviews-list li, .simple-list li{background:var(--card);margin-bottom:.5rem;padding:.6rem;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.chefs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
+
+/* Toast */
+.toast{position:fixed;right:1rem;bottom:1rem;background:#222;color:#fff;padding:.6rem .8rem;border-radius:6px;opacity:0;transform:translateY(10px);transition:all .25s}
+.toast.show{opacity:1;transform:translateY(0)}
+.fade-out{opacity:0;transform:scale(.98);transition:all .2s}
+
+/* Galería: marco, imagen y controles */
+.gallery-frame{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  width:100%;
+  padding:.4rem;
+  box-sizing:border-box;
+}
+.gallery-frame img{
+  width:100%;
+  max-width:900px;        /* ancho máximo en pantallas grandes */
+  height:auto;
+  max-height:560px;       /* limita la altura para evitar imágenes enormes */
+  object-fit:cover;       /* recorta manteniendo aspecto */
+  border-radius:8px;
+  box-shadow:0 4px 18px rgba(0,0,0,.12);
+  transition:transform .22s ease, opacity .18s ease;
+  display:block;
+}
+
+/* Controles (prev/next) */
+.gallery-frame button{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  color:inherit;
+  padding:.45rem .6rem;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:1rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:44px;
+  min-height:44px;
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+:root.dark .gallery-frame button{
+  border-color: rgba(255,255,255,.06);
+  background: #0f1720;
+  color: #e6eef6;
+}
+
+/* Pequeña animación al cambiar imagen */
+.gallery-frame img.fade {
+  opacity:0;
+  transform:scale(.995);
+}
+
+/* Ajustes para pantallas pequeñas */
+@media(max-width:900px){
+  .gallery-frame img{ max-width:700px; max-height:460px; }
+}
+@media(max-width:600px){
+  .gallery-frame{ gap:.4rem; padding:.25rem; }
+  .gallery-frame img{ max-width:100%; max-height:320px; }
+  .gallery-frame button{ min-width:40px; min-height:40px; padding:.35rem .45rem; font-size:.95rem; }
+}
+
+/* Modo oscuro: al añadir la clase .dark al elemento raíz se usan estos valores */
+:root.dark {
+  --bg: #0f1720;
+  --card: #111318;
+  --accent: #ff8a80;
+  --muted: #bfc7cf;
+  color-scheme: dark;
+}
+
+/* Transiciones suaves para cambios de tema */
+html, body, .menu-card, .site-header, .menu-list, .chefs-grid, .reviews-list li {
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+
+/* Ajustes visuales cuando está activo el modo oscuro */
+:root.dark body { background: var(--bg); color: #e6eef6; }
+:root.dark .site-header { background: #0b1220; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.6); }
+:root.dark .menu-card { background: var(--card); box-shadow: 0 2px 8px rgba(0,0,0,.45); }
+:root.dark input, :root.dark textarea, :root.dark select { background: #101418; color: #e6eef6; border-color: rgba(255,255,255,.06); }
+
+/* Theme toggle button */
+.theme-toggle{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.12);
+  color: inherit;
+  padding: .35rem .5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: .5rem;
+  font-size: 1rem;
+}
+.theme-toggle[aria-pressed="true"]{ background: rgba(255,255,255,.08); }
+@media (prefers-color-scheme: dark){
+  /* Por defecto en sistemas oscuros, visualmente coherente */
+  .theme-toggle{ border-color: rgba(255,255,255,.12); }
+}
+
+/* Responsive adjustments */
+@media(min-width:900px){
+  .container{grid-template-columns:2fr 1fr;align-items:start}
+  #menu-section{grid-column:1}
+  #form-section,#info-section{grid-column:2}
+}
+@media(max-width:600px){
+  .main-nav ul{flex-wrap:wrap}
+}
+
+/* Footer */
+.site-footer{
+  margin-top:1.25rem;
+  background:transparent;
+  color:var(--muted);
+  font-size:0.95rem;
+  padding:.75rem 1rem;
+  border-top:1px solid rgba(0,0,0,0.04);
+}
+:root.dark .site-footer{ border-top-color: rgba(255,255,255,.04); color:var(--muted); }
+.site-footer small { display:inline-block; }
+.site-footer time { font-weight:600; color:inherit; }
+
+/* Welcome card */
+.welcome-card{ background:var(--card); border-radius:8px; padding:0.9rem; box-shadow:0 2px 6px rgba(0,0,0,.06); display:block; }
+.welcome-card input{ max-width:320px; }
+#welcome .cta { margin-top:.5rem; }
+#greeting{ font-weight:700; font-size:1rem; color:var(--accent); }

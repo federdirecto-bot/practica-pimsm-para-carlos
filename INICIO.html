@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Restaurante - Menú interactivo</title>
+	<link rel="stylesheet" href="styles.css">
+	<!--  favicon -->
+	<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/433/433087.png" id="site-favicon" type="image/x-icon">
+</head>
+<body>
+	<header class="site-header">
+		<!-- Navegación principal: enlaces a páginas del proyecto (bidireccional) -->
+		<h1>Restaurante La Sazón</h1>
+		<nav class="main-nav" aria-label="Navegación principal">
+			<ul>
+				<li><a href="INICIO.html" class="nav-link" data-target="inicio">Inicio</a></li>
+				<li><a href="menu.html" class="nav-link" data-target="menu-section">Menú</a></li>
+				<li><a href="INICIO.html#reservas" class="nav-link" data-target="reservas">Reservas</a></li>
+				<li><a href="INICIO.html#opiniones" class="nav-link" data-target="opiniones">Opiniones</a></li>
+				<li><a href="acerca.html" class="nav-link" data-target="chefs">Acerca</a></li>
+				<li><a href="contacto.html" class="nav-link" data-target="contacto">Contacto</a></li>
+				<li><a href="galeria.html" class="nav-link" data-target="galeria">Galería</a></li>
+			</ul>
+		</nav>
+
+		<!-- Theme toggle: accessible button, manejado por script.js -->
+		<button id="btn-theme" class="theme-toggle" aria-pressed="false" title="Alternar modo oscuro">🌙</button>
+	</header>
+
+	<main id="main" class="container">
+		<!-- Portada/inicio: breve presentación del restaurante -->
+		<section id="inicio" class="hero section" tabindex="-1" aria-label="Inicio">
+			<h2>Bienvenidos a La Sazón</h2>
+			<p>Sabores auténticos, ingredientes frescos y un ambiente incomparable. Explora nuestro menú, reserva mesa o deja tu opinión.</p>
+			<p><a class="cta" href="#menu-section">Ver el menú</a></p>
+		</section>
+
+    <!-- Welcome: pedir nombre y mostrar saludo (se controla desde script.js) -->
+    <section id="welcome" class="section welcome-card" aria-label="Bienvenida">
+      <div id="welcome-ui">
+        <form id="welcome-form" novalidate>
+          <label for="visitor-name">¿Cómo te llamas?</label>
+          <div style="display:flex;gap:.5rem;align-items:center;margin-top:.4rem">
+            <input id="visitor-name" name="visitorName" placeholder="Tu nombre" />
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+
+        <div id="greeting" style="display:none;margin-top:.6rem;">
+          <!-- texto de saludo inyectado por JS -->
+        </div>
+        <button id="change-name" style="display:none;margin-top:.5rem;">Cambiar nombre</button>
+      </div>
+    </section>
+
+		<!-- Controles: búsqueda y filtrado (conectados al script.js para filtrar el menú) -->
+		<section class="controls section" aria-label="Controles de búsqueda y filtros">
+			<!-- search / category: usados por script.js para aplicar filtros -->
+			<div class="search">
+				<label for="search">Buscar plato:</label>
+				<input id="search" type="search" placeholder="ej. Enchiladas" />
+			</div>
+			<div class="filter">
+				<label for="category">Categoría:</label>
+				<select id="category" aria-label="Filtrar por categoría">
+					<option value="">Todas</option>
+					<option value="entrada">Entradas</option>
+					<option value="principal">Platos principales</option>
+					<option value="postre">Postres</option>
+					<option value="bebida">Bebidas</option>
+				</select>
+			</div>
+		</section>
+
+		<!-- Sección del menú -->
+		<section id="menu-section" class="section" aria-label="Lista del menú">
+			<h2>Menú</h2>
+			<div id="loading" role="status" aria-live="polite" class="loading">Al ataque!</div>
+			<ul id="menu-list" class="menu-list" aria-live="polite"></ul>
+		</section>
+
+		<!-- Formulario para añadir platos (como editor rápido) -->
+		<section id="form-section" class="section" aria-label="Añadir plato">
+			<h2>Añadir nuevo plato</h2>
+			<form id="add-form" novalidate>
+				<div>
+					<label for="name">Nombre</label>
+					<input id="name" name="name" required />
+				</div>
+				<div>
+					<label for="price">Precio (€)</label>
+					<input id="price" name="price" type="number" step="0.01" required />
+				</div>
+				<div>
+					<label for="cat">Categoría</label>
+					<select id="cat" name="category" required>
+						<option value="">Seleccione...</option>
+						<option value="entrada">Entradas</option>
+						<option value="principal">Platos principales</option>
+						<option value="postre">Postres</option>
+						<option value="bebida">Bebidas</option>
+					</select>
+				</div>
+				<div>
+					<label for="img">URL imagen (opcional)</label>
+					<input id="img" name="image" type="url" placeholder="https://..." />
+				</div>
+				<div class="form-actions">
+					<button type="submit">Guardar plato</button>
+					<button type="reset">Limpiar</button>
+				</div>
+			</form>
+		</section>
+
+		<!-- Nueva sección: Reservas -->
+		<section id="reservas" class="section" aria-label="Reservas">
+			<h2>Reserva una mesa</h2>
+			<form id="reservation-form" novalidate>
+				<div>
+					<label for="res-name">Nombre</label>
+					<input id="res-name" name="resName" required />
+				</div>
+				<div>
+					<label for="res-date">Fecha y hora</label>
+					<input id="res-date" name="resDate" type="datetime-local" required />
+				</div>
+				<div>
+					<label for="res-guests">Invitados</label>
+					<input id="res-guests" name="resGuests" type="number" min="1" max="20" value="2" required />
+				</div>
+				<div class="form-actions">
+					<button type="submit">Reservar</button>
+				</div>
+			</form>
+
+			<h3>Reservas próximas</h3>
+			<ul id="reservations-list" class="simple-list" aria-live="polite"></ul>
+		</section>
+
+		<!-- Nueva sección: Opiniones -->
+		<section id="opiniones" class="section" aria-label="Opiniones">
+			<h2>Opiniones de clientes</h2>
+			<form id="review-form" novalidate>
+				<div>
+					<label for="rev-name">Tu nombre</label>
+					<input id="rev-name" name="revName" required />
+				</div>
+				<div>
+					<label for="rev-text">Opinión</label>
+					<textarea id="rev-text" name="revText" rows="3" required></textarea>
+				</div>
+				<div class="form-actions">
+					<button type="submit">Enviar opinión</button>
+				</div>
+			</form>
+
+			<ul id="reviews-list" class="reviews-list" aria-live="polite"></ul>
+		</section>
+
+		<!-- Nueva sección: Chefs (datos renderizados dinámicamente) -->
+		<section id="chefs" class="section" aria-label="Chefs">
+			<h2>Nuestro equipo</h2>
+			<div id="chefs-list" class="chefs-grid" aria-live="polite"></div>
+		</section>
+
+		<!-- Nueva sección: Contacto -->
+		<section id="contacto" class="section" aria-label="Contacto">
+			<h2>Contacto</h2>
+			<form id="contact-form" novalidate>
+				<div>
+					<label for="contact-name">Nombre</label>
+					<input id="contact-name" name="contactName" required />
+				</div>
+				<div>
+					<label for="contact-email">Email</label>
+					<input id="contact-email" name="contactEmail" type="email" required />
+				</div>
+				<div>
+					<label for="contact-msg">Mensaje</label>
+					<textarea id="contact-msg" name="contactMsg" rows="4" required></textarea>
+				</div>
+				<div class="form-actions">
+					<button type="submit">Enviar</button>
+				</div>
+			</form>
+		</section>
+
+		<!-- Sección de información del proyecto -->
+		<section id="info-section" class="section" aria-label="Información">
+			<h2>¿Que nos distingue de los demas?</h2>
+			<p>Estamos orgullos de decir que ofrecemos un servicio que es capaz de satisfacer todo tipo de necesidad alimenticia <br>Nos encargamos de recibir su pedido y no somos un servicio como Globo o Uber Eats, nosotros <strong>todos los pedidos desde nuestra cocina</strong><br>demas decir que tenemos todos los derechos y consentimientos</p>
+		</section>
+  </main>
+
+  <!-- Footer: fecha actual -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><small>Fecha: <time id="site-date" datetime=""></time></small></div>
+  </footer>
+
+	<!-- Toast mensajes -->
+	<div id="toast" role="status" aria-live="polite" class="toast" hidden></div>
+
+	<script src="script.js" defer></script>
+</body>
+</html>

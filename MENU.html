@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Menú - La Sazón</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- favicon -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/433/433087.png" id="site-favicon" type="image/x-icon">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Restaurante La Sazón</h1>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="INICIO.html" class="nav-link" data-target="inicio">Inicio</a></li>
+        <li><a href="menu.html" class="nav-link" data-target="menu-section">Menú</a></li>
+        <li><a href="INICIO.html#reservas" class="nav-link" data-target="reservas">Reservas</a></li>
+        <li><a href="INICIO.html#opiniones" class="nav-link" data-target="opiniones">Opiniones</a></li>
+        <li><a href="acerca.html" class="nav-link" data-target="chefs">Acerca</a></li>
+        <li><a href="contacto.html" class="nav-link" data-target="contacto">Contacto</a></li>
+        <li><a href="galeria.html" class="nav-link" data-target="galeria">Galería</a></li>
+      </ul>
+    </nav>
+
+    <!-- Theme toggle -->
+    <button id="btn-theme" class="theme-toggle" aria-pressed="false" title="Alternar modo oscuro">🌙</button>
+  </header>
+
+  <main class="container">
+    <!-- Página dedicada al menú: los inputs (search/category) están conectados a script.js -->
+    <section id="menu-section" class="section" aria-label="Menú">
+      <h2>Nuestro Menú</h2>
+      <div class="controls">
+        <label for="search">Buscar plato</label>
+        <input id="search" placeholder="Buscar...">
+        <label for="category">Categoría</label>
+        <select id="category">
+          <option value="">Todas</option>
+          <option value="entrada">Entradas</option>
+          <option value="principal">Platos principales</option>
+          <option value="postre">Postres</option>
+          <option value="bebida">Bebidas</option>
+        </select>
+      </div>
+
+      <div id="loading" class="loading" role="status" aria-live="polite">Cargando datos…</div>
+      <!-- menu-list: renderizado dinámico desde script.js -->
+      <ul id="menu-list" class="menu-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <!-- Footer: fecha actual -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><small>Fecha: <time id="site-date" datetime=""></time></small></div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="toast" hidden></div>
+  <script src="script.js" defer></script>
+</body>
+</html>
+  <script src="script.js" defer></script>
+</body>
+</html>

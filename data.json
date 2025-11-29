@@ -1,0 +1,30 @@
+[
+  {
+    "id": "p1",
+    "name": "Enchiladas verdes",
+    "price": 8.5,
+    "category": "principal",
+    "image": "imagenes/helado.jpg"
+  },
+  {
+    "id": "p2",
+    "name": "Guacamole con totopos",
+    "price": 5.0,
+    "category": "entrada",
+    "image": "imagenes/lHotel-de-Ville-Crissier-Suiza.webp"
+  },
+  {
+    "id": "p3",
+    "name": "Cheesecake de maracuyá",
+    "price": 4.5,
+    "category": "postre",
+    "image": "imagenes/0000380693.jpg"
+  },
+  {
+    "id": "p4",
+    "name": "Agua de jamaica",
+    "price": 2.5,
+    "category": "bebida",
+    "image": "imagenes/8-el-cenador-de-amos_4849e954_2000x1333.jpg"
+  }
+]
