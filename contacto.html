@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluciones IA | Contacto</title>
+  <meta name="description" content="Formulario de contacto para consultas relacionadas con los servicios de inteligencia artificial.">
+  <link rel="icon" href="imagenes/imagen logo.png">
+  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <figure>
+      <img src="imagenes/imagen logo.png" alt="Logo de Soluciones IA" width="80" height="80">
+      <figcaption>Soluciones IA</figcaption>
+    </figure>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="acercade.html">Acerca de</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="tabladeprecios.html">Precios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="Contacto">
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <form id="contacto-form" novalidate>
+  <label for="nombre">
+    Nombre:
+    <input type="text" id="nombre" name="nombre" required>
+    <span class="icon" aria-hidden="true"></span>
+  </label>
+  <small class="error" id="error-nombre" aria-live="polite"></small>
+
+  <label for="email">
+    Correo electrónico:
+    <input type="email" id="email" name="email" required>
+    <span class="icon" aria-hidden="true"></span>
+  </label>
+  <small class="error" id="error-email" aria-live="polite"></small>
+
+  <label for="mensaje">
+    Mensaje:
+    <textarea id="mensaje" name="mensaje" rows="5" maxlength="500" required></textarea>
+    <span class="icon" aria-hidden="true"></span>
+  </label>
+  <div class="char-counter" id="char-count">0 / 500</div>
+  <small class="error" id="error-mensaje" aria-live="polite"></small>
+
+  <button type="submit" id="enviar-btn" class="cta">Enviar</button>
+</form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Proyecto SMR - Soluciones IA</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
